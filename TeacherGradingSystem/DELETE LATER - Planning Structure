@@ -1,0 +1,17 @@
+CardLayout System
+
+Page 1: Title Screen
+- GridBagLayout.SOUTH - "START", "INSTRUCTIONS"
+
+Page 2: Instructions
+- BorderLayout.CENTER - A JScrollPane with the instructions on it
+- BorderLayout.SOUTH - "RETURN TO TITLE SCREEN"
+
+Page 3: Add Assignments
+- GridBagLayout.SOUTH - "GRADE ASSIGNMENTS", "STUDENT REPORT", "INSTRUCTIONS", "CLOSE"
+
+Page 4: Grade Assignments
+- GridBagLayout.SOUTH - "ADD ASSIGNMENTS", "STUDENT REPORT", "INSTRUCTIONS", "CLOSE"
+
+Page 5: Student Report
+- GridBagLayout.SOUTH - "ADD ASSIGNMENTS", "GRADE ASSIGNMENTS", "INSTRUCTIONS", CLOSE"
