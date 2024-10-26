@@ -7,15 +7,28 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
+/**
+ * The TitleScreen class creates the graphics for the title card of the Teacher
+ * Grading System.
+ * 
+ * @author Daniel Santillan
+ */
 public class TitleScreen extends JPanel {
 	
-	private static final long serialVersionUID = 1L;
-	private int logoXTeacher;
-	private int logoXGrading;
-	private int logoXSimulator;
-	private int logoXSymbol;
+	/**
+	 * FIELDS
+	 */
+	private static final long serialVersionUID = 1L;  // Version
+	private int logoXTeacher;						  // X-coord for "teacher"
+	private int logoXGrading;						  // X-coord for "grading"	
+	private int logoXSimulator;						  // X-coord for "simulator"
+	private int logoXSymbol;						  // X-coord for the symbol
 	
 	
+	/**
+	 * The TitleScreen constructor equates default values to the x-coordinates
+	 * for each piece of the Teacher Grading System's logo.
+	 */
 	public TitleScreen() {
 		logoXTeacher = 0;
 		logoXGrading = 0;
@@ -24,6 +37,13 @@ public class TitleScreen extends JPanel {
 	}
 	
 	
+	/**
+	 * The paintComponent method prepares all the graphics necessary for the
+	 * title card. The method prepares the background colors and the logo.
+	 * The method also changes the values of the fields until they reach a
+	 * certain point (using conditionals and repaint()) to make the logo "move
+	 * into place" when the user opens the program.
+	 */
 	@Override
 	public void paintComponent(Graphics g) {
 		Graphics2D g2d = (Graphics2D)g;
@@ -77,11 +97,30 @@ public class TitleScreen extends JPanel {
 	}
 	
 	
+	/**
+	 * The resetGraphics method resets the x-cooordinates to their default
+	 * values. This method is called when the card layout switches back to the
+	 * title screen from the instructions page.
+	 */
 	public void resetGraphics() {
 		logoXTeacher = 0;
 		logoXGrading = 0;
 		logoXSimulator = 0;
 		logoXSymbol = 1500;
 	}
+
+
+	/**
+	 * This is the toString method for this class. It prints out the various
+	 * fields from this class.
+	 */
+	@Override
+	public String toString() {
+		return "TitleScreen [logoXTeacher=" + logoXTeacher + ", logoXGrading=" +
+				logoXGrading + ", logoXSimulator=" + logoXSimulator + 
+				", logoXSymbol=" + logoXSymbol + "]";
+	}
+	
+	
 	
 }

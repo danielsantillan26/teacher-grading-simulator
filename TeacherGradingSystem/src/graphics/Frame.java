@@ -6,15 +6,15 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-public class Frame extends JFrame implements ActionListener, KeyListener {
+public class Frame extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -37,6 +37,7 @@ public class Frame extends JFrame implements ActionListener, KeyListener {
 	
 	private JButton pageOneStart;
 	private JButton pageOneInstructions;
+	private JButton pageOneEasterEgg;
 	private JButton pageTwoReturn;
 	private JButton pageThreeGradeAssignments;
 	private JButton pageThreeStudentReport;
@@ -62,6 +63,7 @@ public class Frame extends JFrame implements ActionListener, KeyListener {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setResizable(true);	
+		setFocusable(true);
 		
 		cl = new CardLayout();
 		container = getContentPane();
@@ -75,19 +77,38 @@ public class Frame extends JFrame implements ActionListener, KeyListener {
 		page6 = new EasterEgg();
 		
 		setUpCardLayout();
+		
+		addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentResized(ComponentEvent e) {
+				page1.resetGraphics();
+			}
+		});
 	}
 	
 	
 	private void setUpCardLayout() {
-		Icon start = new ImageIcon("src/resources/START.png");
+		Icon addAssignments = new ImageIcon("src/resources/ADD_ASSIGNMENTS.png");
+		Icon close = new ImageIcon("src/resources/CLOSE.png");
+		Icon easterEgg = new ImageIcon("src/resources/EASTER_EGG.png");
+		Icon gradeAssignments = new ImageIcon("src/resources/GRADE_ASSIGNMENTS.png");
 		Icon instructions = new ImageIcon("src/resources/INSTRUCTIONS.png");
+		Icon instructions2 = new ImageIcon("src/resources/INSTRUCTIONS2.png");
 		Icon returnHome = new ImageIcon("src/resources/RETURN.png");
+		Icon start = new ImageIcon("src/resources/START.png");
+		Icon studentReport = new ImageIcon("src/resources/STUDENT_REPORT.png");
 		
 		pageOneStart = new JButton(start);
 		pageOneStart.setBorder(null);
 		pageOneStart.setOpaque(false);
 		pageOneStart.setContentAreaFilled(false);		// https://stackoverflow.com/questions/4585867/transparent-jbutton
 		pageOneStart.setBorderPainted(false);
+		
+		pageOneEasterEgg = new JButton(easterEgg);
+		pageOneEasterEgg.setBorder(null);
+		pageOneEasterEgg.setOpaque(false);
+		pageOneEasterEgg.setContentAreaFilled(false);
+		pageOneEasterEgg.setBorderPainted(false);
 		
 		pageOneInstructions = new JButton(instructions);
 		pageOneInstructions.setBorder(null);
@@ -101,21 +122,86 @@ public class Frame extends JFrame implements ActionListener, KeyListener {
 		pageTwoReturn.setContentAreaFilled(false);
 		pageTwoReturn.setBorderPainted(false);
 		
-		pageThreeGradeAssignments = new JButton("GRADE ASSIGNMENTS");
-		pageThreeStudentReport = new JButton("STUDENT REPORT");
-		pageThreeInstructions = new JButton("INSTRUCTIONS");
-		pageThreeClose = new JButton("CLOSE");
-		pageFourAddAssignments = new JButton("ADD ASSIGNMENTS");
-		pageFourStudentReport = new JButton("STUDENT REPORT");
-		pageFourInstructions = new JButton("INSTRUCTIONS");
-		pageFourClose = new JButton("CLOSE");
-		pageFiveAddAssignments = new JButton("ADD ASSIGNMENTS");
-		pageFiveGradeAssignments = new JButton("GRADE ASSIGNMENTS");
-		pageFiveInstructions = new JButton("INSTRUCTIONS");
-		pageFiveClose = new JButton("CLOSE");
-		pageSixClose = new JButton("CLOSE");
+		pageThreeGradeAssignments = new JButton(gradeAssignments);
+		pageThreeGradeAssignments.setBorder(null);
+		pageThreeGradeAssignments.setOpaque(false);
+		pageThreeGradeAssignments.setContentAreaFilled(false);
+		pageThreeGradeAssignments.setBorderPainted(false);
+		
+		pageThreeStudentReport = new JButton(studentReport);
+		pageThreeStudentReport.setBorder(null);
+		pageThreeStudentReport.setOpaque(false);
+		pageThreeStudentReport.setContentAreaFilled(false);
+		pageThreeStudentReport.setBorderPainted(false);
+		
+		pageThreeInstructions = new JButton(instructions2);
+		pageThreeInstructions.setBorder(null);
+		pageThreeInstructions.setOpaque(false);
+		pageThreeInstructions.setContentAreaFilled(false);
+		pageThreeInstructions.setBorderPainted(false);
+		
+		pageThreeClose = new JButton(close);
+		pageThreeClose.setBorder(null);
+		pageThreeClose.setOpaque(false);
+		pageThreeClose.setContentAreaFilled(false);
+		pageThreeClose.setBorderPainted(false);
+		
+		pageFourAddAssignments = new JButton(addAssignments);
+		pageFourAddAssignments.setBorder(null);
+		pageFourAddAssignments.setOpaque(false);
+		pageFourAddAssignments.setContentAreaFilled(false);
+		pageFourAddAssignments.setBorderPainted(false);
+		
+		pageFourStudentReport = new JButton(studentReport);
+		pageFourStudentReport.setBorder(null);
+		pageFourStudentReport.setOpaque(false);
+		pageFourStudentReport.setContentAreaFilled(false);
+		pageFourStudentReport.setBorderPainted(false);
+		
+		pageFourInstructions = new JButton(instructions2);
+		pageFourInstructions.setBorder(null);
+		pageFourInstructions.setOpaque(false);
+		pageFourInstructions.setContentAreaFilled(false);
+		pageFourInstructions.setBorderPainted(false);
+		
+		pageFourClose = new JButton(close);
+		pageFourClose.setBorder(null);
+		pageFourClose.setOpaque(false);
+		pageFourClose.setContentAreaFilled(false);
+		pageFourClose.setBorderPainted(false);
+		
+		pageFiveAddAssignments = new JButton(addAssignments);
+		pageFiveAddAssignments.setBorder(null);
+		pageFiveAddAssignments.setOpaque(false);
+		pageFiveAddAssignments.setContentAreaFilled(false);
+		pageFiveAddAssignments.setBorderPainted(false);
+		
+		pageFiveGradeAssignments = new JButton(gradeAssignments);
+		pageFiveGradeAssignments.setBorder(null);
+		pageFiveGradeAssignments.setOpaque(false);
+		pageFiveGradeAssignments.setContentAreaFilled(false);
+		pageFiveGradeAssignments.setBorderPainted(false);
+		
+		pageFiveInstructions = new JButton(instructions2);
+		pageFiveInstructions.setBorder(null);
+		pageFiveInstructions.setOpaque(false);
+		pageFiveInstructions.setContentAreaFilled(false);
+		pageFiveInstructions.setBorderPainted(false);
+		
+		pageFiveClose = new JButton(close);
+		pageFiveClose.setBorder(null);
+		pageFiveClose.setOpaque(false);
+		pageFiveClose.setContentAreaFilled(false);
+		pageFiveClose.setBorderPainted(false);
+		
+		pageSixClose = new JButton(close);
+		pageSixClose.setBorder(null);
+		pageSixClose.setOpaque(false);
+		pageSixClose.setContentAreaFilled(false);
+		pageSixClose.setBorderPainted(false);
 		
 		pageOneStart.addActionListener(this);
+		pageOneEasterEgg.addActionListener(this);
 		pageOneInstructions.addActionListener(this);
 		pageTwoReturn.addActionListener(this);
 		pageThreeGradeAssignments.addActionListener(this);
@@ -133,21 +219,16 @@ public class Frame extends JFrame implements ActionListener, KeyListener {
 		pageSixClose.addActionListener(this);
 		
 		page1.add(pageOneStart);
+		page1.add(pageOneEasterEgg);
 		page1.add(pageOneInstructions);
 		page2.add(pageTwoReturn);
-		page3.add(pageThreeGradeAssignments);
-		page3.add(pageThreeStudentReport);
-		page3.add(pageThreeInstructions);
-		page3.add(pageThreeClose);
-		page4.add(pageFourAddAssignments);
-		page4.add(pageFourStudentReport);
-		page4.add(pageFourInstructions);
-		page4.add(pageFourClose);
-		page5.add(pageFiveAddAssignments);
-		page5.add(pageFiveGradeAssignments);
-		page5.add(pageFiveInstructions);
-		page5.add(pageFiveClose);
-		page6.add(pageSixClose);
+		page3.addFlowLayoutComponents(pageThreeGradeAssignments, 
+				pageThreeStudentReport, pageThreeInstructions, pageThreeClose);
+		page4.addFlowLayoutComponents(pageFourAddAssignments,
+				pageFourStudentReport, pageFourInstructions, pageFourClose);
+		page5.addFlowLayoutComponents(pageFiveAddAssignments, 
+				pageFiveGradeAssignments, pageFiveInstructions, pageFiveClose);
+		page6.addFlowLayoutComponents(pageSixClose);
 		
 		container.add(TITLE_SCREEN, page1);
 		container.add(INSTRUCTIONS, page2);
@@ -155,27 +236,6 @@ public class Frame extends JFrame implements ActionListener, KeyListener {
 		container.add(GRADE_ASSIGNMENTS, page4);
 		container.add(STUDENT_REPORT, page5);
 		container.add(EASTER_EGG, page6);
-	}
-
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 
 
@@ -208,6 +268,8 @@ public class Frame extends JFrame implements ActionListener, KeyListener {
 				pageFourClose || e.getSource() == pageFiveClose || e.getSource()
 				== pageSixClose) {
 			System.exit(0);
+		} else if (e.getSource() == pageOneEasterEgg) {
+			cl.last(container);
 		}
 		
 	}

@@ -4,12 +4,10 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 public class Instructions extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
-	private JScrollPane scrollPane;
 	
 	public Instructions() {
 
