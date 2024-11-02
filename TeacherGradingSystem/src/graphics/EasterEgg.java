@@ -27,7 +27,7 @@ public class EasterEgg extends JPanel {
 		fl = new FlowLayout();
 		fl.setAlignment(FlowLayout.CENTER);
 		flPanel = new JPanel();
-		flPanel.setBackground(GraphicsConstants.headerColor);
+		flPanel.setBackground(GraphicsConstants.COLOR_HEADER);
 		flPanel.setLayout(fl);	
 		add(flPanel, BorderLayout.NORTH);
 		
@@ -44,9 +44,9 @@ public class EasterEgg extends JPanel {
 	public void paintComponent(Graphics g) {
 		Graphics2D g2d = (Graphics2D)g;
 		
-		g2d.setColor(GraphicsConstants.backgroundColor);
+		g2d.setColor(GraphicsConstants.COLOR_BACKGROUND);
 		g2d.fillRect(0, 0, getWidth(), getHeight());
-		g2d.setColor(GraphicsConstants.headerColor);
+		g2d.setColor(GraphicsConstants.COLOR_HEADER);
 		g2d.fillRect(0, 0, getWidth(), 50);
 	}
 	

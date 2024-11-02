@@ -9,8 +9,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
@@ -35,23 +33,23 @@ public class Frame extends JFrame implements ActionListener{
 	private static final String STUDENT_REPORT = "5";
 	private static final String EASTER_EGG = "6";
 	
-	private JButton pageOneStart;
-	private JButton pageOneInstructions;
-	private JButton pageOneEasterEgg;
-	private JButton pageTwoReturn;
-	private JButton pageThreeGradeAssignments;
-	private JButton pageThreeStudentReport;
-	private JButton pageThreeInstructions;
-	private JButton pageThreeClose;
-	private JButton pageFourAddAssignments;
-	private JButton pageFourStudentReport;
-	private JButton pageFourInstructions;
-	private JButton pageFourClose;
-	private JButton pageFiveAddAssignments;
-	private JButton pageFiveGradeAssignments;
-	private JButton pageFiveInstructions;
-	private JButton pageFiveClose;
-	private JButton pageSixClose;
+	private JButton btnPageOneStart;
+	private JButton btnPageOneInstructions;
+	private JButton btnPageOneEasterEgg;
+	private JButton btnPageTwoReturn;
+	private JButton btnPageThreeGradeAssignments;
+	private JButton btnPageThreeStudentReport;
+	private JButton btnPageThreeInstructions;
+	private JButton btnPageThreeClose;
+	private JButton btnPageFourAddAssignments;
+	private JButton btnPageFourStudentReport;
+	private JButton btnPageFourInstructions;
+	private JButton btnPageFourClose;
+	private JButton btnPageFiveAddAssignments;
+	private JButton btnPageFiveGradeAssignments;
+	private JButton btnPageFiveInstructions;
+	private JButton btnPageFiveClose;
+	private JButton btnPageSixClose;
 	
 	
 	public Frame() {
@@ -60,6 +58,7 @@ public class Frame extends JFrame implements ActionListener{
 		int length = x.width;
 		int width = x.height;
 		setSize(length, width);
+		setExtendedState(JFrame. MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setResizable(true);	
@@ -88,147 +87,137 @@ public class Frame extends JFrame implements ActionListener{
 	
 	
 	private void setUpCardLayout() {
-		Icon addAssignments = new ImageIcon("src/resources/ADD_ASSIGNMENTS.png");
-		Icon close = new ImageIcon("src/resources/CLOSE.png");
-		Icon easterEgg = new ImageIcon("src/resources/EASTER_EGG.png");
-		Icon gradeAssignments = new ImageIcon("src/resources/GRADE_ASSIGNMENTS.png");
-		Icon instructions = new ImageIcon("src/resources/INSTRUCTIONS.png");
-		Icon instructions2 = new ImageIcon("src/resources/INSTRUCTIONS2.png");
-		Icon returnHome = new ImageIcon("src/resources/RETURN.png");
-		Icon start = new ImageIcon("src/resources/START.png");
-		Icon studentReport = new ImageIcon("src/resources/STUDENT_REPORT.png");
+		btnPageOneStart = new JButton(GraphicsConstants.ICON_START);
+		btnPageOneStart.setBorder(null);
+		btnPageOneStart.setOpaque(false);
+		btnPageOneStart.setContentAreaFilled(false);		// https://stackoverflow.com/questions/4585867/transparent-jbutton
+		btnPageOneStart.setBorderPainted(false);
 		
-		pageOneStart = new JButton(start);
-		pageOneStart.setBorder(null);
-		pageOneStart.setOpaque(false);
-		pageOneStart.setContentAreaFilled(false);		// https://stackoverflow.com/questions/4585867/transparent-jbutton
-		pageOneStart.setBorderPainted(false);
+		btnPageOneEasterEgg = new JButton(GraphicsConstants.ICON_EASTER_EGG);
+		btnPageOneEasterEgg.setBorder(null);
+		btnPageOneEasterEgg.setOpaque(false);
+		btnPageOneEasterEgg.setContentAreaFilled(false);
+		btnPageOneEasterEgg.setBorderPainted(false);
 		
-		pageOneEasterEgg = new JButton(easterEgg);
-		pageOneEasterEgg.setBorder(null);
-		pageOneEasterEgg.setOpaque(false);
-		pageOneEasterEgg.setContentAreaFilled(false);
-		pageOneEasterEgg.setBorderPainted(false);
+		btnPageOneInstructions = new JButton(GraphicsConstants.ICON_INSTRUCTIONS);
+		btnPageOneInstructions.setBorder(null);
+		btnPageOneInstructions.setOpaque(false);
+		btnPageOneInstructions.setContentAreaFilled(false);
+		btnPageOneInstructions.setBorderPainted(false);
 		
-		pageOneInstructions = new JButton(instructions);
-		pageOneInstructions.setBorder(null);
-		pageOneInstructions.setOpaque(false);
-		pageOneInstructions.setContentAreaFilled(false);
-		pageOneInstructions.setBorderPainted(false);
+		btnPageTwoReturn = new JButton(GraphicsConstants.ICON_RETURN_HOME);
+		btnPageTwoReturn.setBorder(null);
+		btnPageTwoReturn.setOpaque(false);
+		btnPageTwoReturn.setContentAreaFilled(false);
+		btnPageTwoReturn.setBorderPainted(false);
 		
-		pageTwoReturn = new JButton(returnHome);
-		pageTwoReturn.setBorder(null);
-		pageTwoReturn.setOpaque(false);
-		pageTwoReturn.setContentAreaFilled(false);
-		pageTwoReturn.setBorderPainted(false);
+		btnPageThreeGradeAssignments = new JButton(GraphicsConstants.ICON_GRADE_ASSIGNMENTS);
+		btnPageThreeGradeAssignments.setBorder(null);
+		btnPageThreeGradeAssignments.setOpaque(false);
+		btnPageThreeGradeAssignments.setContentAreaFilled(false);
+		btnPageThreeGradeAssignments.setBorderPainted(false);
 		
-		pageThreeGradeAssignments = new JButton(gradeAssignments);
-		pageThreeGradeAssignments.setBorder(null);
-		pageThreeGradeAssignments.setOpaque(false);
-		pageThreeGradeAssignments.setContentAreaFilled(false);
-		pageThreeGradeAssignments.setBorderPainted(false);
+		btnPageThreeStudentReport = new JButton(GraphicsConstants.ICON_STUDENT_REPORT);
+		btnPageThreeStudentReport.setBorder(null);
+		btnPageThreeStudentReport.setOpaque(false);
+		btnPageThreeStudentReport.setContentAreaFilled(false);
+		btnPageThreeStudentReport.setBorderPainted(false);
 		
-		pageThreeStudentReport = new JButton(studentReport);
-		pageThreeStudentReport.setBorder(null);
-		pageThreeStudentReport.setOpaque(false);
-		pageThreeStudentReport.setContentAreaFilled(false);
-		pageThreeStudentReport.setBorderPainted(false);
+		btnPageThreeInstructions = new JButton(GraphicsConstants.ICON_INSTRUCTIONS2);
+		btnPageThreeInstructions.setBorder(null);
+		btnPageThreeInstructions.setOpaque(false);
+		btnPageThreeInstructions.setContentAreaFilled(false);
+		btnPageThreeInstructions.setBorderPainted(false);
 		
-		pageThreeInstructions = new JButton(instructions2);
-		pageThreeInstructions.setBorder(null);
-		pageThreeInstructions.setOpaque(false);
-		pageThreeInstructions.setContentAreaFilled(false);
-		pageThreeInstructions.setBorderPainted(false);
+		btnPageThreeClose = new JButton(GraphicsConstants.ICON_CLOSE);
+		btnPageThreeClose.setBorder(null);
+		btnPageThreeClose.setOpaque(false);
+		btnPageThreeClose.setContentAreaFilled(false);
+		btnPageThreeClose.setBorderPainted(false);
 		
-		pageThreeClose = new JButton(close);
-		pageThreeClose.setBorder(null);
-		pageThreeClose.setOpaque(false);
-		pageThreeClose.setContentAreaFilled(false);
-		pageThreeClose.setBorderPainted(false);
+		btnPageFourAddAssignments = new JButton(GraphicsConstants.ICON_ADD_ASSIGNMENTS);
+		btnPageFourAddAssignments.setBorder(null);
+		btnPageFourAddAssignments.setOpaque(false);
+		btnPageFourAddAssignments.setContentAreaFilled(false);
+		btnPageFourAddAssignments.setBorderPainted(false);
 		
-		pageFourAddAssignments = new JButton(addAssignments);
-		pageFourAddAssignments.setBorder(null);
-		pageFourAddAssignments.setOpaque(false);
-		pageFourAddAssignments.setContentAreaFilled(false);
-		pageFourAddAssignments.setBorderPainted(false);
+		btnPageFourStudentReport = new JButton(GraphicsConstants.ICON_STUDENT_REPORT);
+		btnPageFourStudentReport.setBorder(null);
+		btnPageFourStudentReport.setOpaque(false);
+		btnPageFourStudentReport.setContentAreaFilled(false);
+		btnPageFourStudentReport.setBorderPainted(false);
 		
-		pageFourStudentReport = new JButton(studentReport);
-		pageFourStudentReport.setBorder(null);
-		pageFourStudentReport.setOpaque(false);
-		pageFourStudentReport.setContentAreaFilled(false);
-		pageFourStudentReport.setBorderPainted(false);
+		btnPageFourInstructions = new JButton(GraphicsConstants.ICON_INSTRUCTIONS2);
+		btnPageFourInstructions.setBorder(null);
+		btnPageFourInstructions.setOpaque(false);
+		btnPageFourInstructions.setContentAreaFilled(false);
+		btnPageFourInstructions.setBorderPainted(false);
 		
-		pageFourInstructions = new JButton(instructions2);
-		pageFourInstructions.setBorder(null);
-		pageFourInstructions.setOpaque(false);
-		pageFourInstructions.setContentAreaFilled(false);
-		pageFourInstructions.setBorderPainted(false);
+		btnPageFourClose = new JButton(GraphicsConstants.ICON_CLOSE);
+		btnPageFourClose.setBorder(null);
+		btnPageFourClose.setOpaque(false);
+		btnPageFourClose.setContentAreaFilled(false);
+		btnPageFourClose.setBorderPainted(false);
 		
-		pageFourClose = new JButton(close);
-		pageFourClose.setBorder(null);
-		pageFourClose.setOpaque(false);
-		pageFourClose.setContentAreaFilled(false);
-		pageFourClose.setBorderPainted(false);
+		btnPageFiveAddAssignments = new JButton(GraphicsConstants.ICON_ADD_ASSIGNMENTS);
+		btnPageFiveAddAssignments.setBorder(null);
+		btnPageFiveAddAssignments.setOpaque(false);
+		btnPageFiveAddAssignments.setContentAreaFilled(false);
+		btnPageFiveAddAssignments.setBorderPainted(false);
 		
-		pageFiveAddAssignments = new JButton(addAssignments);
-		pageFiveAddAssignments.setBorder(null);
-		pageFiveAddAssignments.setOpaque(false);
-		pageFiveAddAssignments.setContentAreaFilled(false);
-		pageFiveAddAssignments.setBorderPainted(false);
+		btnPageFiveGradeAssignments = new JButton(GraphicsConstants.ICON_GRADE_ASSIGNMENTS);
+		btnPageFiveGradeAssignments.setBorder(null);
+		btnPageFiveGradeAssignments.setOpaque(false);
+		btnPageFiveGradeAssignments.setContentAreaFilled(false);
+		btnPageFiveGradeAssignments.setBorderPainted(false);
 		
-		pageFiveGradeAssignments = new JButton(gradeAssignments);
-		pageFiveGradeAssignments.setBorder(null);
-		pageFiveGradeAssignments.setOpaque(false);
-		pageFiveGradeAssignments.setContentAreaFilled(false);
-		pageFiveGradeAssignments.setBorderPainted(false);
+		btnPageFiveInstructions = new JButton(GraphicsConstants.ICON_INSTRUCTIONS2);
+		btnPageFiveInstructions.setBorder(null);
+		btnPageFiveInstructions.setOpaque(false);
+		btnPageFiveInstructions.setContentAreaFilled(false);
+		btnPageFiveInstructions.setBorderPainted(false);
 		
-		pageFiveInstructions = new JButton(instructions2);
-		pageFiveInstructions.setBorder(null);
-		pageFiveInstructions.setOpaque(false);
-		pageFiveInstructions.setContentAreaFilled(false);
-		pageFiveInstructions.setBorderPainted(false);
+		btnPageFiveClose = new JButton(GraphicsConstants.ICON_CLOSE);
+		btnPageFiveClose.setBorder(null);
+		btnPageFiveClose.setOpaque(false);
+		btnPageFiveClose.setContentAreaFilled(false);
+		btnPageFiveClose.setBorderPainted(false);
 		
-		pageFiveClose = new JButton(close);
-		pageFiveClose.setBorder(null);
-		pageFiveClose.setOpaque(false);
-		pageFiveClose.setContentAreaFilled(false);
-		pageFiveClose.setBorderPainted(false);
+		btnPageSixClose = new JButton(GraphicsConstants.ICON_CLOSE);
+		btnPageSixClose.setBorder(null);
+		btnPageSixClose.setOpaque(false);
+		btnPageSixClose.setContentAreaFilled(false);
+		btnPageSixClose.setBorderPainted(false);
 		
-		pageSixClose = new JButton(close);
-		pageSixClose.setBorder(null);
-		pageSixClose.setOpaque(false);
-		pageSixClose.setContentAreaFilled(false);
-		pageSixClose.setBorderPainted(false);
+		btnPageOneStart.addActionListener(this);
+		btnPageOneEasterEgg.addActionListener(this);
+		btnPageOneInstructions.addActionListener(this);
+		btnPageTwoReturn.addActionListener(this);
+		btnPageThreeGradeAssignments.addActionListener(this);
+		btnPageThreeStudentReport.addActionListener(this);
+		btnPageThreeInstructions.addActionListener(this);
+		btnPageThreeClose.addActionListener(this);
+		btnPageFourAddAssignments.addActionListener(this);
+		btnPageFourStudentReport.addActionListener(this);
+		btnPageFourInstructions.addActionListener(this);
+		btnPageFourClose.addActionListener(this);
+		btnPageFiveAddAssignments.addActionListener(this);
+		btnPageFiveGradeAssignments.addActionListener(this);
+		btnPageFiveInstructions.addActionListener(this);
+		btnPageFiveClose.addActionListener(this);
+		btnPageSixClose.addActionListener(this);
 		
-		pageOneStart.addActionListener(this);
-		pageOneEasterEgg.addActionListener(this);
-		pageOneInstructions.addActionListener(this);
-		pageTwoReturn.addActionListener(this);
-		pageThreeGradeAssignments.addActionListener(this);
-		pageThreeStudentReport.addActionListener(this);
-		pageThreeInstructions.addActionListener(this);
-		pageThreeClose.addActionListener(this);
-		pageFourAddAssignments.addActionListener(this);
-		pageFourStudentReport.addActionListener(this);
-		pageFourInstructions.addActionListener(this);
-		pageFourClose.addActionListener(this);
-		pageFiveAddAssignments.addActionListener(this);
-		pageFiveGradeAssignments.addActionListener(this);
-		pageFiveInstructions.addActionListener(this);
-		pageFiveClose.addActionListener(this);
-		pageSixClose.addActionListener(this);
-		
-		page1.add(pageOneStart);
-		page1.add(pageOneEasterEgg);
-		page1.add(pageOneInstructions);
-		page2.add(pageTwoReturn);
-		page3.addFlowLayoutComponents(pageThreeGradeAssignments, 
-				pageThreeStudentReport, pageThreeInstructions, pageThreeClose);
-		page4.addFlowLayoutComponents(pageFourAddAssignments,
-				pageFourStudentReport, pageFourInstructions, pageFourClose);
-		page5.addFlowLayoutComponents(pageFiveAddAssignments, 
-				pageFiveGradeAssignments, pageFiveInstructions, pageFiveClose);
-		page6.addFlowLayoutComponents(pageSixClose);
+		page1.add(btnPageOneStart);
+		page1.add(btnPageOneEasterEgg);
+		page1.add(btnPageOneInstructions);
+		page2.add(btnPageTwoReturn);
+		page3.addFlowLayoutComponents(btnPageThreeGradeAssignments, 
+				btnPageThreeStudentReport, btnPageThreeInstructions, btnPageThreeClose);
+		page4.addFlowLayoutComponents(btnPageFourAddAssignments,
+				btnPageFourStudentReport, btnPageFourInstructions, btnPageFourClose);
+		page5.addFlowLayoutComponents(btnPageFiveAddAssignments, 
+				btnPageFiveGradeAssignments, btnPageFiveInstructions, btnPageFiveClose);
+		page6.addFlowLayoutComponents(btnPageSixClose);
 		
 		container.add(TITLE_SCREEN, page1);
 		container.add(INSTRUCTIONS, page2);
@@ -241,34 +230,34 @@ public class Frame extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == pageOneStart || e.getSource() == 
-				pageFourAddAssignments || e.getSource() ==
-				pageFiveAddAssignments) {
+		if (e.getSource() == btnPageOneStart || e.getSource() == 
+				btnPageFourAddAssignments || e.getSource() ==
+				btnPageFiveAddAssignments) {
 			cl.first(container);
 			cl.next(container);
 			cl.next(container);
-		} else if (e.getSource() == pageOneInstructions || e.getSource() ==
-				pageThreeInstructions || e.getSource() == pageFourInstructions
-				|| e.getSource() == pageFiveInstructions) {
+		} else if (e.getSource() == btnPageOneInstructions || e.getSource() ==
+				btnPageThreeInstructions || e.getSource() == btnPageFourInstructions
+				|| e.getSource() == btnPageFiveInstructions) {
 			cl.first(container);
 			cl.next(container);
-		} else if (e.getSource() == pageThreeGradeAssignments || e.getSource()
-				== pageFiveGradeAssignments) {
+		} else if (e.getSource() == btnPageThreeGradeAssignments || e.getSource()
+				== btnPageFiveGradeAssignments) {
 			cl.last(container);
 			cl.previous(container);
 			cl.previous(container);
-		} else if (e.getSource() == pageThreeStudentReport || e.getSource() ==
-				pageFourStudentReport) {
+		} else if (e.getSource() == btnPageThreeStudentReport || e.getSource() ==
+				btnPageFourStudentReport) {
 			cl.last(container);
 			cl.previous(container);
-		} else if (e.getSource() == pageTwoReturn) {
+		} else if (e.getSource() == btnPageTwoReturn) {
 			cl.first(container);
 			page1.resetGraphics();
-		} else if (e.getSource() == pageThreeClose || e.getSource() ==
-				pageFourClose || e.getSource() == pageFiveClose || e.getSource()
-				== pageSixClose) {
+		} else if (e.getSource() == btnPageThreeClose || e.getSource() ==
+				btnPageFourClose || e.getSource() == btnPageFiveClose || e.getSource()
+				== btnPageSixClose) {
 			System.exit(0);
-		} else if (e.getSource() == pageOneEasterEgg) {
+		} else if (e.getSource() == btnPageOneEasterEgg) {
 			cl.last(container);
 		}
 		

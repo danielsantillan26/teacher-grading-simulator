@@ -48,9 +48,9 @@ public class TitleScreen extends JPanel {
 	public void paintComponent(Graphics g) {
 		Graphics2D g2d = (Graphics2D)g;
 		
-		g2d.setColor(GraphicsConstants.backgroundColor);
+		g2d.setColor(GraphicsConstants.COLOR_BACKGROUND);
 		g2d.fillRect(0, 0, getWidth(), getHeight());
-		g2d.setColor(GraphicsConstants.headerColor);
+		g2d.setColor(GraphicsConstants.COLOR_HEADER);
 		g2d.fillRect(0, 0, getWidth(), 50);
 		
 		g2d.setColor(Color.BLACK);
@@ -62,7 +62,7 @@ public class TitleScreen extends JPanel {
 		Color symbolColor = new Color(0, 59, 155);
 		g2d.setColor(symbolColor);
 		g2d.fillOval(logoXSymbol, getHeight()/2 - 200, 250, 250);
-		g2d.setColor(GraphicsConstants.backgroundColor);
+		g2d.setColor(GraphicsConstants.COLOR_BACKGROUND);
 		g2d.fillOval(logoXSymbol + 75, getHeight()/2 - 175, 150, 150);
 		g2d.setColor(symbolColor);
 		g2d.fillOval(logoXSymbol + 80, getHeight()/2 - 150, 25, 25);
