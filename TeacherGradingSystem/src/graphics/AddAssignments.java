@@ -16,7 +16,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import net.miginfocom.swing.MigLayout;
-import student.StudentConstants;
+import student.StudentInformation;
 
 
 
@@ -117,7 +117,13 @@ public class AddAssignments extends JPanel implements ActionListener {
 				{"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""},
 				{"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""},
 				{"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""},
-				{"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}};
+				{"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""},
+				{"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""},
+				{"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""},
+				{"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""},
+				{"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""},
+				{"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""},
+				{"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""},};
 		table = new JTable(data, columnNames);
 		table.setFillsViewportHeight(true);
 		spTable = new JScrollPane(table);
@@ -169,9 +175,15 @@ public class AddAssignments extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnCollectData) {
-			StudentConstants.updateAssignments(table, comboBoxSelectSystem.getSelectedItem());
-		} else {
-
+			StudentInformation.updateAssignments(table, (String)comboBoxSelectSystem.getSelectedItem());
+		} else if (e.getSource() == btnResetData) {
+			table.setValueAt("Add Assignment Name", 0, 0);
+			table.setValueAt("Add Points/Weight", 0, 1);
+			
+			for (int i = 1; i < table.getRowCount(); i++) {
+				table.setValueAt("", i, 0);
+				table.setValueAt("", i, 1);
+			}
 		}
 	}
 

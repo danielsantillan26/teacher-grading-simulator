@@ -1,6 +1,7 @@
 package run;
 
 import graphics.Frame;
+import student.StudentInformation;
 
 /**
  * The Run class runs the Teacher Grading System. It creates an object of the
@@ -20,6 +21,8 @@ public class Run {
 		Frame frame = new Frame();
 		frame.setVisible(true);
 		System.out.println(new Run());
+		
+		StudentInformation.instantiateVariables();
 	}
 	
 	

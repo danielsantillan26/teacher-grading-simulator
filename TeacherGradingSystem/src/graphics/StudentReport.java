@@ -1,32 +1,38 @@
 package graphics;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class StudentReport extends JPanel {
+public class StudentReport extends JPanel implements ActionListener {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private FlowLayout fl;
+	private FlowLayout fl, fl2;
 	private BorderLayout bl;
-	private JPanel flPanel;
+	private JPanel northPanel, centerPanel, southPanel;
+	
+	private JButton btnRetrieveData, btnGenerateReport;
+	private JComboBox<String> comboBoxSelectStudents;
 	
 	
 	public StudentReport() {
 		bl = new BorderLayout();
 		setLayout(bl);
 		
-		fl = new FlowLayout();
-		fl.setAlignment(FlowLayout.CENTER);
-		flPanel = new JPanel();
-		flPanel.setBackground(GraphicsConstants.COLOR_HEADER);
-		flPanel.setLayout(fl);	
-		add(flPanel, BorderLayout.NORTH);
+		prepareNorthPanel();
+		prepareCenterPanel();
+		prepareSouthPanel();
+	
 	}
 	
 	
@@ -41,11 +47,72 @@ public class StudentReport extends JPanel {
 	}
 	
 	
+	public void prepareNorthPanel() {
+		fl = new FlowLayout();
+		fl.setAlignment(FlowLayout.CENTER);
+		northPanel = new JPanel(fl);
+		northPanel.setBackground(GraphicsConstants.COLOR_HEADER);
+		add(northPanel, BorderLayout.NORTH);
+	}
+	
+	
 	public void addFlowLayoutComponents(JButton a, JButton b, JButton c, JButton d) {
-		flPanel.add(a);
-		flPanel.add(b);
-		flPanel.add(c);
-		flPanel.add(d);
+		northPanel.add(a);
+		northPanel.add(b);
+		northPanel.add(c);
+		northPanel.add(d);
+	}
+	
+	
+	public void prepareCenterPanel() {
+		centerPanel = new JPanel();
+		
+		centerPanel.setBackground(GraphicsConstants.COLOR_BACKGROUND);
+		
+		JLabel labelSelectStudent = new JLabel(GraphicsConstants.ICON_SELECT_STUDENT);
+		
+		comboBoxSelectStudents = new JComboBox<String>();
+		comboBoxSelectStudents.addItem("Select Student");
+		comboBoxSelectStudents.setPreferredSize(new Dimension(300, 30));
+		
+		centerPanel.add(labelSelectStudent);
+		centerPanel.add(comboBoxSelectStudents);
+		
+		add(centerPanel, BorderLayout.CENTER);
+	}
+	
+	
+	public void prepareSouthPanel() {
+		fl2 = new FlowLayout();
+		fl2.setAlignment(FlowLayout.CENTER);
+		southPanel = new JPanel(fl2);
+		southPanel.setBackground(GraphicsConstants.COLOR_BACKGROUND);
+		
+		btnRetrieveData = new JButton(GraphicsConstants.ICON_RETRIEVE_DATA);
+		btnRetrieveData.addActionListener(this);
+		btnRetrieveData.setBorder(null);
+		btnRetrieveData.setOpaque(false);
+		btnRetrieveData.setContentAreaFilled(false);
+		btnRetrieveData.setBorderPainted(false);
+		
+		btnGenerateReport = new JButton(GraphicsConstants.ICON_GENERATE_REPORT);
+		btnGenerateReport.addActionListener(this);
+		btnGenerateReport.setBorder(null);
+		btnGenerateReport.setOpaque(false);
+		btnGenerateReport.setContentAreaFilled(false);
+		btnGenerateReport.setBorderPainted(false);
+		
+		southPanel.add(btnRetrieveData);
+		southPanel.add(btnGenerateReport);
+		
+		add(southPanel, BorderLayout.SOUTH);
+	}
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
