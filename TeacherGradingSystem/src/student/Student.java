@@ -26,7 +26,7 @@ public class Student {
 	public Student(String name) {
 		this.name = name;
 		grades = new ArrayList<Double>();
-		for (int i = 0; i < 200; i++) {
+		for (int i = 0; i < StudentInformation.getAssignmentList().size(); i++) {
 			grades.add(-1.0);
 		}
 	}
@@ -42,6 +42,12 @@ public class Student {
 		while (i < grades.size()) {
 			grades.set(i, -1.0);
 			i++;
+		}
+		
+		if (grades.size() < StudentInformation.getAssignmentList().size()) {
+			for (int j = grades.size(); j < StudentInformation.getAssignmentList().size(); j++) {
+				grades.add(-1.0);
+			}
 		}
 	}
 	

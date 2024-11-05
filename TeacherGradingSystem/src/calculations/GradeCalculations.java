@@ -57,7 +57,7 @@ public class GradeCalculations {
 			i++;
 		}
 
-		return pointsSum/totalPoints;
+		return pointsSum/totalPoints * 100;
 	}
 
 
@@ -73,11 +73,13 @@ public class GradeCalculations {
 	 * @return					the average grade
 	 */
 	public static double calculateAverageWeightedGrade(ArrayList<Double>grades, ArrayList<Double> weightValues) {
-		weightValues = fixWeights(weightValues);
+		weightValues = fixWeights(grades, weightValues);
 		double totalGrade = 0;
 
 		for (int i = 0; i < grades.size(); i++) {
-			totalGrade += (grades.get(i) * weightValues.get(i));
+			if (grades.get(i) >= 0) {
+				totalGrade += (grades.get(i) * weightValues.get(i));
+			}
 		}
 
 		return totalGrade;
@@ -90,10 +92,11 @@ public class GradeCalculations {
 	 * weight in the list. This is to ensure correct calculation of the
 	 * weighted grade.
 	 * 
+	 * @param grades		the list of grades
 	 * @param weights		the list of weights
 	 * @return				the list of modified weights)
 	 */
-	private static ArrayList<Double> fixWeights(ArrayList<Double> weights) {
+	private static ArrayList<Double> fixWeights(ArrayList<Double>grades, ArrayList<Double> weights) {
 		ArrayList<Double> individualWeights = new ArrayList<Double>();
 
 		for (int i = 0; i < weights.size(); i++) {
@@ -105,7 +108,7 @@ public class GradeCalculations {
 		for (double j : individualWeights) {
 			int occurrence = 0;
 			for (int k = 0; k < weights.size(); k++) {
-				if (weights.get(k) == j) {
+				if (weights.get(k) == j && grades.get(k) >= 0) {
 					occurrence++;
 				}
 			}
