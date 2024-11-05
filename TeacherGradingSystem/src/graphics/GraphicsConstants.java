@@ -24,28 +24,28 @@ public final class GraphicsConstants {
 	 * scatter them all throughout. Each icon is mostly used once, but it is
 	 * easier for them to be in one area for simple reference.
 	 */
-	public static final Icon ICON_ADD_ASSIGNMENTS = new ImageIcon("src/resources/ADD_ASSIGNMENTS.png");
-	public static final Icon ICON_CLOSE = new ImageIcon("src/resources/CLOSE.png");
-	public static final Icon ICON_COLLECT_DATA = new ImageIcon("src/resources/COLLECT_DATA.png");
-	public static final Icon ICON_EASTER_EGG = new ImageIcon("src/resources/EASTER_EGG.png");
-	public static final Icon ICON_FAILED_TO_COMPILE = new ImageIcon("src/resources/FAILED_TO_COMPILE.png");
-	public static final Icon ICON_FILE_CREATED = new ImageIcon("src/resources/FILE_CREATED.png");
-	public static final Icon ICON_GENERATE_REPORT = new ImageIcon("src/resources/GENERATE_REPORT.png");
-	public static final Icon ICON_GRADE_ASSIGNMENTS = new ImageIcon("src/resources/GRADE_ASSIGNMENTS.png");
-	public static final Icon ICON_INSTRUCTIONS = new ImageIcon("src/resources/INSTRUCTIONS.png");
-	public static final Icon ICON_INSTRUCTIONS2 = new ImageIcon("src/resources/INSTRUCTIONS2.png");
-	public static final Icon ICON_INSTRUCTIONS_FULL = new ImageIcon("src/resources/INSTRUCTIONS_FULL.png");
-	public static final Icon ICON_LOAD_STUDENT_DATA = new ImageIcon("src/resources/LOAD_STUDENT_DATA.png");
-	public static final Icon ICON_RESET_DATA = new ImageIcon("src/resources/RESET_DATA.png");
-	public static final Icon ICON_RETRIEVE_DATA = new ImageIcon("src/resources/RETRIEVE_DATA.png");
-	public static final Icon ICON_RETURN_HOME = new ImageIcon("src/resources/RETURN.png");
-	public static final Icon ICON_SAVE_DATA = new ImageIcon("src/resources/SAVE_DATA.png");
-	public static final Icon ICON_SELECT_ASSIGNMENT = new ImageIcon("src/resources/SELECT_ASSIGNMENT.png");
-	public static final Icon ICON_SELECT_STUDENT = new ImageIcon("src/resources/SELECT_STUDENT.png");
-	public static final Icon ICON_SELECT_SYSTEM = new ImageIcon("src/resources/SELECT_SYSTEM.png");
-	public static final Icon ICON_START = new ImageIcon("src/resources/START.png");
-	public static final Icon ICON_STUDENT_REPORT = new ImageIcon("src/resources/STUDENT_REPORT.png");
-	public static final Icon ICON_THE_EASTER_EGG = new ImageIcon("src/resources/THE_EASTER_EGG.png");
+	public static final Icon ICON_ADD_ASSIGNMENTS = new ImageIcon("res/ADD_ASSIGNMENTS.png");
+	public static final Icon ICON_CLOSE = new ImageIcon("res/CLOSE.png");
+	public static final Icon ICON_COLLECT_DATA = new ImageIcon("res/COLLECT_DATA.png");
+	public static final Icon ICON_EASTER_EGG = new ImageIcon("res/EASTER_EGG.png");
+	public static final Icon ICON_FAILED_TO_COMPILE = new ImageIcon("res/FAILED_TO_COMPILE.png");
+	public static final Icon ICON_FILE_CREATED = new ImageIcon("res/FILE_CREATED.png");
+	public static final Icon ICON_GENERATE_REPORT = new ImageIcon("res/GENERATE_REPORT.png");
+	public static final Icon ICON_GRADE_ASSIGNMENTS = new ImageIcon("res/GRADE_ASSIGNMENTS.png");
+	public static final Icon ICON_INSTRUCTIONS = new ImageIcon("res/INSTRUCTIONS.png");
+	public static final Icon ICON_INSTRUCTIONS2 = new ImageIcon("res/INSTRUCTIONS2.png");
+	public static final Icon ICON_INSTRUCTIONS_FULL = new ImageIcon("res/INSTRUCTIONS_FULL.png");
+	public static final Icon ICON_LOAD_STUDENT_DATA = new ImageIcon("res/LOAD_STUDENT_DATA.png");
+	public static final Icon ICON_RESET_DATA = new ImageIcon("res/RESET_DATA.png");
+	public static final Icon ICON_RETRIEVE_DATA = new ImageIcon("res/RETRIEVE_DATA.png");
+	public static final Icon ICON_RETURN_HOME = new ImageIcon("res/RETURN.png");
+	public static final Icon ICON_SAVE_DATA = new ImageIcon("res/SAVE_DATA.png");
+	public static final Icon ICON_SELECT_ASSIGNMENT = new ImageIcon("res/SELECT_ASSIGNMENT.png");
+	public static final Icon ICON_SELECT_STUDENT = new ImageIcon("res/SELECT_STUDENT.png");
+	public static final Icon ICON_SELECT_SYSTEM = new ImageIcon("res/SELECT_SYSTEM.png");
+	public static final Icon ICON_START = new ImageIcon("res/START.png");
+	public static final Icon ICON_STUDENT_REPORT = new ImageIcon("res/STUDENT_REPORT.png");
+	public static final Icon ICON_THE_EASTER_EGG = new ImageIcon("res/THE_EASTER_EGG.png");
 	
 	
 	/**
