@@ -1,5 +1,6 @@
 package graphics;
 
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -210,7 +211,8 @@ public class Frame extends JFrame implements ActionListener{
 		page1.add(btnPageOneStart);
 		page1.add(btnPageOneEasterEgg);
 		page1.add(btnPageOneInstructions);
-		page2.add(btnPageTwoReturn);
+		page2.add(btnPageTwoReturn, BorderLayout.NORTH);
+		page2.addInstructions();
 		page3.addFlowLayoutComponents(btnPageThreeGradeAssignments, 
 				btnPageThreeStudentReport, btnPageThreeInstructions, btnPageThreeClose);
 		page4.addFlowLayoutComponents(btnPageFourAddAssignments,

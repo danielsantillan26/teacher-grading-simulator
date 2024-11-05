@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.swing.JTable;
 
+import filecreation.FileMaker;
+
 public class StudentInformation {
 	private static ArrayList<String> assignments;
 	private static ArrayList<Double> systemValues;
@@ -16,6 +18,7 @@ public class StudentInformation {
 		assignments = new ArrayList<String>();
 		systemValues = new ArrayList<Double>();
 		students = new ArrayList<Student>();
+		system = -1;
 	}
 	
 	
@@ -98,6 +101,12 @@ public class StudentInformation {
 	}
 	
 	
+	public static boolean generateStudentReport(int index) {
+		return FileMaker.createStudentReport(students.get(index));
+	}
+	
+	
+	
 	public static List<String> getAssignmentList() {
 		return assignments;
 	}
@@ -113,6 +122,13 @@ public class StudentInformation {
 	}
 	
 	
+	public static ArrayList<Double> getAssignmentValues() {
+		return systemValues;
+	}
 	
+	
+	public static int getSystem() {
+		return system;
+	}
 	
 }

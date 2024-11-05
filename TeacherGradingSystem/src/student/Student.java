@@ -7,12 +7,16 @@ public class Student {
 	private String name;
 	private ArrayList<Double> grades;
 	
+	
 	public static final long serialVersionUID = 1L;
 	
 	
 	public Student(String name) {
 		this.name = name;
 		grades = new ArrayList<Double>();
+		for (int i = 0; i < 200; i++) {
+			grades.add(-1.0);
+		}
 	}
 	
 	
@@ -32,6 +36,11 @@ public class Student {
 	
 	public String getName() {
 		return name;
+	}
+	
+	
+	public ArrayList<Double> getGrades() {
+		return grades;
 	}
 
 }

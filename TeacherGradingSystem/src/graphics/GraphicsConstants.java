@@ -16,10 +16,13 @@ public final class GraphicsConstants {
 	public static final Icon ICON_CLOSE = new ImageIcon("src/resources/CLOSE.png");
 	public static final Icon ICON_COLLECT_DATA = new ImageIcon("src/resources/COLLECT_DATA.png");
 	public static final Icon ICON_EASTER_EGG = new ImageIcon("src/resources/EASTER_EGG.png");
+	public static final Icon FAILED_TO_COMPILE = new ImageIcon("src/resources/FAILED_TO_COMPILE.png");
+	public static final Icon FILE_CREATED = new ImageIcon("src/resources/FILE_CREATED.png");
 	public static final Icon ICON_GENERATE_REPORT = new ImageIcon("src/resources/GENERATE_REPORT.png");
 	public static final Icon ICON_GRADE_ASSIGNMENTS = new ImageIcon("src/resources/GRADE_ASSIGNMENTS.png");
 	public static final Icon ICON_INSTRUCTIONS = new ImageIcon("src/resources/INSTRUCTIONS.png");
 	public static final Icon ICON_INSTRUCTIONS2 = new ImageIcon("src/resources/INSTRUCTIONS2.png");
+	public static final Icon ICON_INSTRUCTIONS_FULL = new ImageIcon("src/resources/INSTRUCTIONS_FULL.png");
 	public static final Icon ICON_LOAD_STUDENT_DATA = new ImageIcon("src/resources/LOAD_STUDENT_DATA.png");
 	public static final Icon ICON_RESET_DATA = new ImageIcon("src/resources/RESET_DATA.png");
 	public static final Icon ICON_RETRIEVE_DATA = new ImageIcon("src/resources/RETRIEVE_DATA.png");
