@@ -4,7 +4,7 @@ import graphics.Frame;
 import student.StudentInformation;
 
 /**
- * The Run class runs the Teacher Grading System. It creates an object of the
+ * The Run class runs the Teacher Grading Simulator. It creates an object of the
  * frame that holds all the graphics required for the system and runs it.
  * 
  * @author Daniel Santillan
@@ -27,7 +27,8 @@ public class Run {
 	
 	
 	/**
-	 * The toString method prints a message ensuring that the class is running.
+	 * This is the toString method for this class. It prints a message ensuring 
+	 * that the class is running.
 	 */
 	@Override
 	public String toString() {

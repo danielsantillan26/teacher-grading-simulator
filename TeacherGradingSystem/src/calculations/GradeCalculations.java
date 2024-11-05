@@ -1,8 +1,6 @@
 package calculations;
 
 import java.util.ArrayList;
-import java.util.List;
-
 
 /**
  * The GradeCalculations class performs grade calculations for the Teacher
@@ -21,7 +19,7 @@ public class GradeCalculations {
 	 * @param grades		the list of grades
 	 * @return				the average grade
 	 */
-	public static double calculateAverageUnweightedGrade(List<Double> grades) {
+	public static double calculateAverageUnweightedGrade(ArrayList<Double> grades) {
 		double gradeSum = 0.0;
 		double totalAssignments = 0.0;
 
@@ -46,15 +44,17 @@ public class GradeCalculations {
 	 * @param pointValues		the list of maximum point values per assignment
 	 * @return					the average grade
 	 */
-	public static double calculateAveragePointsGrade(List<Double> grades, List<Double> pointValues) {
+	public static double calculateAveragePointsGrade(ArrayList<Double> grades, ArrayList<Double> pointValues) {
 		double pointsSum = 0.0;
 		double totalPoints = 0.0;
 
-		for (int i = 0; i < grades.size(); i++) {
+		int i = 0;
+		while (i < grades.size()) {
 			if (grades.get(i) >= 0) {
 				pointsSum += grades.get(i);
 				totalPoints += pointValues.get(i);
 			}
+			i++;
 		}
 
 		return pointsSum/totalPoints;
@@ -62,13 +62,17 @@ public class GradeCalculations {
 
 
 	/**
-	 * The calculateAverageWeightedGrade method 
+	 * The calculateAverageWeightedGrade method takes in a list of percent
+	 * grades and a list of weights for each assignment. The method uses the
+	 * percent grades and their respective weights to calculate the average
+	 * grade. This method is used to calculate the average grade under a
+	 * weighted percent grading system.
 	 * 
-	 * @param grades
-	 * @param weightValues
-	 * @return
+	 * @param grades			the list of grades
+	 * @param weightValues		the list of weights
+	 * @return					the average grade
 	 */
-	public static double calculateAverageWeightedGrade(List<Double>grades, ArrayList<Double> weightValues) {
+	public static double calculateAverageWeightedGrade(ArrayList<Double>grades, ArrayList<Double> weightValues) {
 		weightValues = fixWeights(weightValues);
 		double totalGrade = 0;
 
@@ -80,6 +84,15 @@ public class GradeCalculations {
 	}
 
 
+	/**
+	 * The fixWeights method divides each weight in the list of weights 
+	 * (for weighted grade calculations) by the number of occurrences of said 
+	 * weight in the list. This is to ensure correct calculation of the
+	 * weighted grade.
+	 * 
+	 * @param weights		the list of weights
+	 * @return				the list of modified weights)
+	 */
 	private static ArrayList<Double> fixWeights(ArrayList<Double> weights) {
 		ArrayList<Double> individualWeights = new ArrayList<Double>();
 
@@ -105,6 +118,15 @@ public class GradeCalculations {
 		}
 
 		return weights;
+	}
+
+
+	/**
+	 * This is the toString method for this class.
+	 */
+	@Override
+	public String toString() {
+		return "GradeCalculations []";
 	}
 
 }

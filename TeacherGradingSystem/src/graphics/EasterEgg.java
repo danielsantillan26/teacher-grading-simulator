@@ -11,28 +11,37 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * The EasterEgg class is a joke of a class. It is here to serve as an easter
+ * egg that one can access on the Teacher Grading Simulator by pressing a random
+ * spot on the title screen that does not look like a button.
+ * 
+ * @author Daniel Santillan
+ */
 public class EasterEgg extends JPanel {
 	
+	// Version
 	private static final long serialVersionUID = 1L;
 	
-	private BorderLayout bl;
-	private FlowLayout fl;
-	private JPanel flPanel;
+	// Components that must be accessed in multiple methods.
+	private JPanel northPanel;
 	
 	
+	/**
+	 * The EasterEgg constructor sets up the Easter Egg section of the program.
+	 * It adds the easter egg itself to the center of the panel.
+	 */
 	public EasterEgg() {
-		bl = new BorderLayout();
-		setLayout(bl);
+		setLayout(new BorderLayout());
 		
-		fl = new FlowLayout();
+		FlowLayout fl = new FlowLayout();
 		fl.setAlignment(FlowLayout.CENTER);
-		flPanel = new JPanel();
-		flPanel.setBackground(GraphicsConstants.COLOR_HEADER);
-		flPanel.setLayout(fl);	
-		add(flPanel, BorderLayout.NORTH);
+		northPanel = new JPanel(fl);
+		northPanel.setBackground(GraphicsConstants.COLOR_HEADER);	
+		add(northPanel, BorderLayout.NORTH);
 		
-		Icon theEasterEgg = new ImageIcon("src/resources/THE_EASTER_EGG.png");
-		JLabel easterEggHolder = new JLabel(theEasterEgg);
+		
+		JLabel easterEggHolder = new JLabel(GraphicsConstants.ICON_THE_EASTER_EGG);
 		add(easterEggHolder, BorderLayout.CENTER);
 		easterEggHolder.setOpaque(false);
 		easterEggHolder.setBorder(null);
@@ -40,6 +49,9 @@ public class EasterEgg extends JPanel {
 	}
 	
 	
+	/**
+	 * The paintComponent method paints the background of the section.
+	 */
 	@Override
 	public void paintComponent(Graphics g) {
 		Graphics2D g2d = (Graphics2D)g;
@@ -51,9 +63,24 @@ public class EasterEgg extends JPanel {
 	}
 	
 	
+	/**
+	 * The addFlowLayoutComponents method takes in a JButton, which is placed
+	 * on top of the section. The JButton comes from the Frame class, which has
+	 * all the buttons needed to switch between cards/close the program.
+	 * 
+	 * @param a		the button to be added (close operation)
+	 */
 	public void addFlowLayoutComponents(JButton a) {
-		flPanel.add(a);
+		northPanel.add(a);
 	}
-	
+
+
+	/**
+	 * This is the toString method for this class. It prints the fields.
+	 */
+	@Override
+	public String toString() {
+		return "EasterEgg [northPanel=" + northPanel + "]";
+	}
 
 }

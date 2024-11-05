@@ -16,31 +16,44 @@ import javax.swing.JPanel;
 
 import student.StudentInformation;
 
+/**
+ * The StudentReport class creates the JPanel for the Student Report page of the
+ * Teacher Grading Simulator. It adds the labels and buttons necessary for this
+ * section, as well as the JComboBox that lets users select the student to form
+ * a report for.
+ * 
+ * @author Daniel Santillan
+ */
+public class StudentReport extends JPanel {
 
-public class StudentReport extends JPanel implements ActionListener {
-
+	// Version
 	private static final long serialVersionUID = 1L;
 
-	private FlowLayout fl, fl2;
-	private BorderLayout bl;
-	private JPanel northPanel, centerPanel, southPanel;
-
+	// Components that must be accessed by multiple methods
+	private JPanel northPanel;
 	private JLabel labelResult;
-	private JButton btnRetrieveData, btnGenerateReport;
 	private JComboBox<String> comboBoxSelectStudents;
 
 
+	/**
+	 * The StudentReport constructor sets up the layout of the JPanel and adds
+	 * the components of the section by calling specific methods.
+	 */
 	public StudentReport() {
-		bl = new BorderLayout();
-		setLayout(bl);
-
-		prepareNorthPanel();
+		setLayout(new BorderLayout());
+		FlowLayout fl = new FlowLayout();
+		fl.setAlignment(FlowLayout.CENTER);
+		
+		prepareNorthPanel(fl);
 		prepareCenterPanel();
-		prepareSouthPanel();
+		prepareSouthPanel(fl);
 
 	}
 
 
+	/**
+	 * The paintComponent method paints the background of the section.
+	 */
 	@Override
 	public void paintComponent(Graphics g) {
 		Graphics2D g2d = (Graphics2D)g;
@@ -52,15 +65,25 @@ public class StudentReport extends JPanel implements ActionListener {
 	}
 
 
-	public void prepareNorthPanel() {
-		fl = new FlowLayout();
-		fl.setAlignment(FlowLayout.CENTER);
+	/**
+	 * The prepareNorthPanel method creates the JPanel that is set in the 
+	 * Student Report section's north border. This includes the buttons that let 
+	 * users to switch between sections.
+	 * 
+	 * @param fl	the FlowLayout manager for this panel
+	 */
+	public void prepareNorthPanel(FlowLayout fl) {
 		northPanel = new JPanel(fl);
 		northPanel.setBackground(GraphicsConstants.COLOR_HEADER);
 		add(northPanel, BorderLayout.NORTH);
 	}
 
 
+	/**
+	 * The addFlowLayoutComponents method adds the buttons from the Frame class
+	 * into the north panel. These buttons are used to switch between sections
+	 * while in the Teacher Grading Simulator.
+	 */
 	public void addFlowLayoutComponents(JButton a, JButton b, JButton c, JButton d) {
 		northPanel.add(a);
 		northPanel.add(b);
@@ -69,8 +92,14 @@ public class StudentReport extends JPanel implements ActionListener {
 	}
 
 
+	/**
+	 * The prepareCenterPanel method creates the JPanel that is set in the 
+	 * Student Report section's center area. This includes the JComboBox that
+	 * lets users select a student to grade, plus a JLabel that determines
+	 * whether or not the file was successfully created.
+	 */
 	public void prepareCenterPanel() {
-		centerPanel = new JPanel();
+		JPanel centerPanel = new JPanel();
 
 		centerPanel.setBackground(GraphicsConstants.COLOR_BACKGROUND);
 
@@ -90,26 +119,73 @@ public class StudentReport extends JPanel implements ActionListener {
 	}
 
 
-	public void prepareSouthPanel() {
-		fl2 = new FlowLayout();
-		fl2.setAlignment(FlowLayout.CENTER);
-		southPanel = new JPanel(fl2);
+	/**
+	 * The prepareSouthPanel method creates the JPanel that is set in the
+	 * Student Report section's south border. This includes the buttons to
+	 * retrieve student data and generate the student report.
+	 * 
+	 * @param fl
+	 */
+	public void prepareSouthPanel(FlowLayout fl) {
+		JPanel southPanel = new JPanel(fl);
 		southPanel.setBackground(GraphicsConstants.COLOR_BACKGROUND);
 
-		btnRetrieveData = new JButton(GraphicsConstants.ICON_RETRIEVE_DATA);
-		btnRetrieveData.addActionListener(this);
+		JButton btnRetrieveData = new JButton(GraphicsConstants.ICON_RETRIEVE_DATA);
 		btnRetrieveData.setBorder(null);
 		btnRetrieveData.setOpaque(false);
 		btnRetrieveData.setContentAreaFilled(false);
 		btnRetrieveData.setBorderPainted(false);
 
-		btnGenerateReport = new JButton(GraphicsConstants.ICON_GENERATE_REPORT);
-		btnGenerateReport.addActionListener(this);
+		JButton btnGenerateReport = new JButton(GraphicsConstants.ICON_GENERATE_REPORT);
 		btnGenerateReport.setBorder(null);
 		btnGenerateReport.setOpaque(false);
 		btnGenerateReport.setContentAreaFilled(false);
 		btnGenerateReport.setBorderPainted(false);
 
+		ActionListener al = new ActionListener() {
+			
+			/**
+			 * The actionPerformed method takes in an ActionEvent. The method 
+			 * determines which button the action came from and performs 
+			 * specific actions based on that observation.
+			 * 
+			 * In this case, the method updates students on the JComboBox if the
+			 * retrieve data button is hit and tries generating a student report 
+			 * if the generate report button is hit.
+			 */
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (e.getSource() == btnRetrieveData) {
+					List<String> studentNames = StudentInformation.getStudentNames();
+
+					if (comboBoxSelectStudents.getItemAt(0) != null) {
+						comboBoxSelectStudents.removeAllItems();
+					}
+
+					for (int i = 0; i < studentNames.size(); i++) {
+						comboBoxSelectStudents.addItem(studentNames.get(i));
+					}
+
+				} else if (e.getSource() == btnGenerateReport) {
+
+					try {
+						if (StudentInformation.generateStudentReport(comboBoxSelectStudents.getSelectedIndex())) {
+							labelResult.setIcon(GraphicsConstants.ICON_FILE_CREATED);
+							setVisible(false);
+							setVisible(true);
+						} else {
+							labelResult.setIcon(GraphicsConstants.ICON_FAILED_TO_COMPILE);
+							setVisible(false);
+							setVisible(true);
+						}
+					} catch (Exception a) { }
+				}
+			}
+		};
+		
+		btnRetrieveData.addActionListener(al);
+		btnGenerateReport.addActionListener(al);
+		
 		southPanel.add(btnRetrieveData);
 		southPanel.add(btnGenerateReport);
 
@@ -117,38 +193,13 @@ public class StudentReport extends JPanel implements ActionListener {
 	}
 
 
+	/**
+	 * This is the toString method for this class. It prints the fields.
+	 */
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btnRetrieveData) {
-			List<String> studentNames = StudentInformation.getStudentNames();
-
-			if (comboBoxSelectStudents.getItemAt(0) != null) {
-				comboBoxSelectStudents.removeAllItems();
-			}
-
-			for (int i = 0; i < studentNames.size(); i++) {
-				comboBoxSelectStudents.addItem(studentNames.get(i));
-			}
-
-		} else if (e.getSource() == btnGenerateReport) {
-
-			try {
-				if (StudentInformation.generateStudentReport(comboBoxSelectStudents.getSelectedIndex())) {
-					labelResult.setIcon(GraphicsConstants.FILE_CREATED);
-					setVisible(false);
-					setVisible(true);
-				} else {
-					labelResult.setIcon(GraphicsConstants.FAILED_TO_COMPILE);
-					setVisible(false);
-					setVisible(true);
-
-				}
-			} catch (Exception a) {
-				
-			}
-
-		}
-
+	public String toString() {
+		return "StudentReport [northPanel=" + northPanel + ", labelResult=" + labelResult + ", comboBoxSelectStudents="
+				+ comboBoxSelectStudents + "]";
 	}
 
 }

@@ -8,17 +8,17 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 /**
- * The TitleScreen class creates the graphics for the title card of the Teacher
- * Grading System.
+ * The TitleScreen class creates the JPanel for the title card of the Teacher
+ * Grading Simulator. It creates the graphics and animation for the title card.
  * 
  * @author Daniel Santillan
  */
 public class TitleScreen extends JPanel {
 	
-	/**
-	 * FIELDS
-	 */
-	private static final long serialVersionUID = 1L;  // Version
+	// Version
+	private static final long serialVersionUID = 1L;
+	
+	// X-coordinates for each part of the animation
 	private int logoXTeacher;						  // X-coord for "teacher"
 	private int logoXGrading;						  // X-coord for "grading"	
 	private int logoXSimulator;						  // X-coord for "simulator"
@@ -69,21 +69,11 @@ public class TitleScreen extends JPanel {
 		g2d.fillOval(logoXSymbol + 150, getHeight()/2 - 155, 80, 80);
 		
 		
-		if (logoXTeacher < getWidth()/2 - 450) {
-			logoXTeacher++;
-		}
-		
-		if (logoXGrading < getWidth()/2 - 400) {
-			logoXGrading++;
-		}
-		
-		if (logoXSimulator < getWidth()/2 - 350) {
-			logoXSimulator++;
-		}
-		
-		if (logoXSymbol > getWidth()/2 + 75) {
-			logoXSymbol--;
-		}
+		logoXTeacher = (logoXTeacher < getWidth()/2 - 450) ? logoXTeacher + 1 : logoXTeacher;
+		logoXGrading = (logoXGrading < getWidth()/2 - 400) ? logoXGrading + 1 : logoXGrading;
+		logoXSimulator = (logoXSimulator < getWidth()/2 - 350) ? logoXSimulator + 1 : logoXSimulator;
+		logoXSymbol = (logoXSymbol > getWidth()/2 + 75) ? logoXSymbol - 1 : logoXSymbol;
+
 		
 		if (logoXSimulator == getWidth()/2 - 350 && logoXSymbol == getWidth()/2
 				+ 75) {
@@ -100,7 +90,7 @@ public class TitleScreen extends JPanel {
 	/**
 	 * The resetGraphics method resets the x-cooordinates to their default
 	 * values. This method is called when the card layout switches back to the
-	 * title screen from the instructions page.
+	 * title screen from the instructions page or when the frame is resized.
 	 */
 	public void resetGraphics() {
 		logoXTeacher = 0;
@@ -111,8 +101,7 @@ public class TitleScreen extends JPanel {
 
 
 	/**
-	 * This is the toString method for this class. It prints out the various
-	 * fields from this class.
+	 * This is the toString method for this class. It prints the fields.
 	 */
 	@Override
 	public String toString() {
@@ -120,7 +109,5 @@ public class TitleScreen extends JPanel {
 				logoXGrading + ", logoXSimulator=" + logoXSimulator + 
 				", logoXSymbol=" + logoXSymbol + "]";
 	}
-	
-	
 	
 }

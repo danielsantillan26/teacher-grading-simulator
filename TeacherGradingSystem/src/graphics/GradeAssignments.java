@@ -19,33 +19,43 @@ import javax.swing.JTable;
 import net.miginfocom.swing.MigLayout;
 import student.StudentInformation;
 
+/**
+ * The GradeAssignments class creates the JPanel for the Grade Assignments page
+ * of the Teacher Grading Simulator. It adds all the labels and buttons 
+ * necessary for this section, as well as a JTable that scores user-inputted
+ * data and a JComboBox that categorizes the user-inputted data.
+ * 
+ * @author DanielSantillan
+ */
+public class GradeAssignments extends JPanel {
 
-public class GradeAssignments extends JPanel implements ActionListener {
-
+	// Version
 	private static final long serialVersionUID = 1L;
 
-	private FlowLayout fl, fl2;
-	private BorderLayout bl;
-	private MigLayout ml;
-	private JPanel northPanel, centerPanel, southPanel;
-
-	private JButton btnRetrieveData, btnSaveData, btnLoadStudentData;
-	private JComboBox<String> comboBoxSelectAssignment;
-	private JLabel labelSelectAssignment;
+	// Components that must be accessed by multiple methods
+	private JPanel northPanel;
 	private JTable table;
-	private JScrollPane spTable;
+	private JComboBox<String> comboBoxSelectAssignment;
 
 
+	/**
+	 * The GradeAssignments constructor sets up the layout of the JPanel and
+	 * adds the components of the section by calling specific methods.
+	 */
 	public GradeAssignments() {
-		bl = new BorderLayout();
-		setLayout(bl);
-
-		prepareNorthPanel();
+		setLayout(new BorderLayout());
+		FlowLayout fl = new FlowLayout();
+		fl.setAlignment(FlowLayout.CENTER);
+		
+		prepareNorthPanel(fl);
 		prepareCenterPanel();
-		prepareSouthPanel();
+		prepareSouthPanel(fl);
 	}
 
 
+	/**
+	 * The paintComponent method paints the background of the section.
+	 */
 	@Override
 	public void paintComponent(Graphics g) {
 		Graphics2D g2d = (Graphics2D)g;
@@ -57,15 +67,25 @@ public class GradeAssignments extends JPanel implements ActionListener {
 	}
 
 
-	private void prepareNorthPanel() {
-		fl = new FlowLayout();
-		fl.setAlignment(FlowLayout.CENTER);
+	/**
+	 * The prepareNorthPanel method creates the JPanel that is set in the Grade 
+	 * Assignment section's north border. This includes the buttons that allow 
+	 * users to switch between sections.
+	 * 
+	 * @param fl	the FlowLayout manager for this panel
+	 */
+	private void prepareNorthPanel(FlowLayout fl) {
 		northPanel = new JPanel(fl);
 		northPanel.setBackground(GraphicsConstants.COLOR_HEADER);
 		add(northPanel, BorderLayout.NORTH);
 	}
 
 
+	/**
+	 * The addFlowLayoutComponents method adds the buttons from the Frame class
+	 * into the north panel. These buttons are used to switch between sections
+	 * while in the Teacher Grading Simulator.
+	 */
 	public void addFlowLayoutComponents(JButton a, JButton b, JButton c, JButton d) {
 		northPanel.add(a);
 		northPanel.add(b);
@@ -74,12 +94,24 @@ public class GradeAssignments extends JPanel implements ActionListener {
 	}
 
 
+	/**
+	 * The prepareCenterPanel method creates the JPanel that is set in the
+	 * Grade Assignment section's center area. This includes the JTable used to
+	 * collect student names and their grades and the JComboBox that users
+	 * implement to select the assignment being graded.
+	 * 
+	 * This panel uses an external layout manager I found on the Internet. It
+	 * helped simplify positioning my JTable and JComboBox in this section. The
+	 * layout manager is called MigLayout and can be found here:
+	 * 
+	 * http://www.miglayout.com/, retrieved 1 November 2024, made by
+	 * Mikael Grev
+	 */
 	private void prepareCenterPanel() {
-		ml = new MigLayout();
-		centerPanel = new JPanel(ml);
+		JPanel centerPanel = new JPanel(new MigLayout());
 		centerPanel.setBackground(GraphicsConstants.COLOR_BACKGROUND);
 
-		labelSelectAssignment = new JLabel(GraphicsConstants.ICON_SELECT_ASSIGNMENT);
+		JLabel labelSelectAssignment = new JLabel(GraphicsConstants.ICON_SELECT_ASSIGNMENT);
 		comboBoxSelectAssignment = new JComboBox<String>();
 		comboBoxSelectAssignment.addItem("Select Assignment");
 		comboBoxSelectAssignment.setPreferredSize(new Dimension(300, 30));
@@ -105,7 +137,7 @@ public class GradeAssignments extends JPanel implements ActionListener {
 				{"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""},};
 		table = new JTable(data, columnNames);
 		table.setFillsViewportHeight(true);
-		spTable = new JScrollPane(table);
+		JScrollPane spTable = new JScrollPane(table);
 		spTable.setPreferredSize(new Dimension(1400, 800));
 
 		centerPanel.add(spTable, "span 2 4");
@@ -117,34 +149,80 @@ public class GradeAssignments extends JPanel implements ActionListener {
 	}
 
 
-	private void prepareSouthPanel() {
-		fl2 = new FlowLayout();
-		fl2.setAlignment(FlowLayout.CENTER);
-
-		southPanel = new JPanel(fl);
+	/**
+	 * The prepareSouthPanel method creates the JPanel that is set in the
+	 * Grade Assignment section's south border. This includes the JButtons used
+	 * to retrieve student data, retrieve assignment data, and collect student
+	 * data.
+	 * 
+	 * @param fl		the FlowLayout manager for this panel
+	 */
+	private void prepareSouthPanel(FlowLayout fl) {
+		JPanel southPanel = new JPanel(fl);
 		southPanel.setBackground(GraphicsConstants.COLOR_BACKGROUND);
 		southPanel.setPreferredSize(new Dimension(getWidth(), 50));
 
-		btnLoadStudentData = new JButton(GraphicsConstants.ICON_LOAD_STUDENT_DATA);
-		btnLoadStudentData.addActionListener(this);
+		JButton btnLoadStudentData = new JButton(GraphicsConstants.ICON_LOAD_STUDENT_DATA);
 		btnLoadStudentData.setBorder(null);
 		btnLoadStudentData.setOpaque(false);
 		btnLoadStudentData.setContentAreaFilled(false);
 		btnLoadStudentData.setBorderPainted(false);
 
-		btnRetrieveData = new JButton(GraphicsConstants.ICON_RETRIEVE_DATA);
-		btnRetrieveData.addActionListener(this);
+		JButton btnRetrieveData = new JButton(GraphicsConstants.ICON_RETRIEVE_DATA);
 		btnRetrieveData.setBorder(null);
 		btnRetrieveData.setOpaque(false);
 		btnRetrieveData.setContentAreaFilled(false);
 		btnRetrieveData.setBorderPainted(false);
 
-		btnSaveData = new JButton(GraphicsConstants.ICON_SAVE_DATA);
-		btnSaveData.addActionListener(this);
+		JButton btnSaveData = new JButton(GraphicsConstants.ICON_SAVE_DATA);
 		btnSaveData.setBorder(null);
 		btnSaveData.setOpaque(false);
 		btnSaveData.setContentAreaFilled(false);
 		btnSaveData.setBorderPainted(false);
+		
+		ActionListener al = new ActionListener() {
+			
+			/**
+			 * The actionPerformed method takes in an ActionEvent. The method 
+			 * determines which button the action came from and performs 
+			 * specific actions based on that observation.
+			 * 
+			 * In this case, the method loads student data on the JTable when 
+			 * the load student data button is hit, adds assignment names to the
+			 * JComboBox when the retrieve data button is hit, and collects 
+			 * grade data to be added in the student objects when the save data
+			 * button is hit.
+			 */
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (e.getSource() == btnLoadStudentData) {
+					List<String> names = StudentInformation.getStudentNames();
+					for (int i = 0; i < names.size(); i++) {
+						table.setValueAt(names.get(i), i, 0);
+					}
+					
+				} else if (e.getSource() == btnRetrieveData) {
+					List<String> assignments = StudentInformation.getAssignmentList();
+					
+					if (comboBoxSelectAssignment.getItemAt(0) != null) {
+						comboBoxSelectAssignment.removeAllItems();
+					}
+
+					int j = 0;
+					while (j < assignments.size()) {
+						comboBoxSelectAssignment.addItem(assignments.get(j));
+						j++;
+					}
+
+				} else if (e.getSource() == btnSaveData) {
+					StudentInformation.updateStudents(table, comboBoxSelectAssignment.getSelectedIndex());
+				}
+			}
+		};
+		
+		btnLoadStudentData.addActionListener(al);
+		btnRetrieveData.addActionListener(al);
+		btnSaveData.addActionListener(al);
 
 		southPanel.add(btnLoadStudentData);
 		southPanel.add(btnRetrieveData);
@@ -155,27 +233,13 @@ public class GradeAssignments extends JPanel implements ActionListener {
 	}
 
 
+	/**
+	 * This is the toString method for this class. It prints the fields.
+	 */
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btnLoadStudentData) {
-			List<String> names = StudentInformation.getStudentNames();
-			for (int i = 0; i < names.size(); i++) {
-				table.setValueAt(names.get(i), i, 0);
-			}
-		} else if (e.getSource() == btnRetrieveData) {
-			List<String> assignments = StudentInformation.getAssignmentList();
-			
-			if (comboBoxSelectAssignment.getItemAt(0) != null) {
-				comboBoxSelectAssignment.removeAllItems();
-			}
-
-			for (int k = 0; k < assignments.size(); k++) {
-				comboBoxSelectAssignment.addItem(assignments.get(k));
-			}
-
-		} else if (e.getSource() == btnSaveData) {
-			StudentInformation.updateStudents(table, comboBoxSelectAssignment.getSelectedIndex());
-		}
+	public String toString() {
+		return "GradeAssignments [northPanel=" + northPanel + ", table=" + table + ", comboBoxSelectAssignment="
+				+ comboBoxSelectAssignment + "]";
 	}
-
+	
 }
