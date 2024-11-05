@@ -1,7 +1,6 @@
 package graphics;
 
 import java.awt.Color;
-import java.awt.GridBagConstraints;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
