@@ -8,6 +8,7 @@ import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -111,7 +112,7 @@ public class AddAssignments extends JPanel {
 		JPanel centerPanel = new JPanel(new MigLayout());
 		centerPanel.setBackground(GraphicsConstants.COLOR_BACKGROUND);
 
-		JLabel labelSelectSystem = new JLabel(GraphicsConstants.ICON_SELECT_SYSTEM);
+		JLabel labelSelectSystem = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("SELECT_SYSTEM.png")));
 
 		comboBoxSelectSystem = new JComboBox<String>();
 		comboBoxSelectSystem.addItem("Points System");
@@ -163,13 +164,13 @@ public class AddAssignments extends JPanel {
 		southPanel.setBackground(GraphicsConstants.COLOR_BACKGROUND);
 		southPanel.setPreferredSize(new Dimension(getWidth(), 50));
 
-		JButton btnCollectData = new JButton(GraphicsConstants.ICON_COLLECT_DATA);
+		JButton btnCollectData = new JButton(new ImageIcon(getClass().getClassLoader().getResource("COLLECT_DATA.png")));
 		btnCollectData.setBorder(null);
 		btnCollectData.setOpaque(false);
 		btnCollectData.setContentAreaFilled(false);
 		btnCollectData.setBorderPainted(false);
 
-		JButton btnResetData = new JButton(GraphicsConstants.ICON_RESET_DATA);
+		JButton btnResetData = new JButton(new ImageIcon(getClass().getClassLoader().getResource("RESET_DATA.png")));
 		btnResetData.setBorder(null);
 		btnResetData.setOpaque(false);
 		btnResetData.setContentAreaFilled(false);

@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -37,7 +38,7 @@ public class Instructions extends JPanel {
 	 * makes the panel look wrong).
 	 */
 	public void addInstructions() {
-		JLabel labelInstructions = new JLabel(GraphicsConstants.ICON_INSTRUCTIONS_FULL);
+		JLabel labelInstructions = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("INSTRUCTIONS_FULL.png")));
 		labelInstructions.setBounds(new Rectangle(50, 100, getWidth() - 50, getHeight() - 50));
 		add(labelInstructions, BorderLayout.CENTER);
 	}

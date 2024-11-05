@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
@@ -81,108 +82,118 @@ public class Frame extends JFrame {
 	
 	/**
 	 * The setUpCardLayout method creates all the buttons necessary to swap
-	 * between pages of the program. The buttons are ImageIcons from the
-	 * GraphicsConstants class. It also adds all the JPanels (the pages of the
-	 * program) to the container that holds the CardLayout.
+	 * between pages of the program. The buttons are ImageIcons set up in this
+	 * method. It also adds all the JPanels (the pages of the program) to the 
+	 * container that holds the CardLayout.
 	 */
 	private void setUpCardLayout() {
-		JButton btnPageOneStart = new JButton(GraphicsConstants.ICON_START);
+		ImageIcon iconAddAssignments = new ImageIcon(getClass().getClassLoader().getResource("ADD_ASSIGNMENTS.png"));
+		ImageIcon iconClose = new ImageIcon(getClass().getClassLoader().getResource("CLOSE.png"));
+		ImageIcon iconEasterEgg = new ImageIcon(getClass().getClassLoader().getResource("EASTER_EGG.png"));
+		ImageIcon iconGradeAssignments = new ImageIcon(getClass().getClassLoader().getResource("GRADE_ASSIGNMENTS.png"));
+		ImageIcon iconInstructions = new ImageIcon(getClass().getClassLoader().getResource("INSTRUCTIONS.png"));
+		ImageIcon iconInstructions2 = new ImageIcon(getClass().getClassLoader().getResource("INSTRUCTIONS2.png"));
+		ImageIcon iconReturn = new ImageIcon(getClass().getClassLoader().getResource("RETURN.png"));
+		ImageIcon iconStart = new ImageIcon(getClass().getClassLoader().getResource("START.png"));
+		ImageIcon iconStudentReport = new ImageIcon(getClass().getClassLoader().getResource("STUDENT_REPORT.png"));
+		
+		JButton btnPageOneStart = new JButton(iconStart);
 		btnPageOneStart.setBorder(null);
 		btnPageOneStart.setOpaque(false);
 		btnPageOneStart.setContentAreaFilled(false);	
 		btnPageOneStart.setBorderPainted(false);
 		
-		JButton btnPageOneEasterEgg = new JButton(GraphicsConstants.ICON_EASTER_EGG);
+		JButton btnPageOneEasterEgg = new JButton(iconEasterEgg);
 		btnPageOneEasterEgg.setBorder(null);
 		btnPageOneEasterEgg.setOpaque(false);
 		btnPageOneEasterEgg.setContentAreaFilled(false);
 		btnPageOneEasterEgg.setBorderPainted(false);
 		
-		JButton btnPageOneInstructions = new JButton(GraphicsConstants.ICON_INSTRUCTIONS);
+		JButton btnPageOneInstructions = new JButton(iconInstructions);
 		btnPageOneInstructions.setBorder(null);
 		btnPageOneInstructions.setOpaque(false);
 		btnPageOneInstructions.setContentAreaFilled(false);
 		btnPageOneInstructions.setBorderPainted(false);
 		
-		JButton btnPageTwoReturn = new JButton(GraphicsConstants.ICON_RETURN_HOME);
+		JButton btnPageTwoReturn = new JButton(iconReturn);
 		btnPageTwoReturn.setBorder(null);
 		btnPageTwoReturn.setOpaque(false);
 		btnPageTwoReturn.setContentAreaFilled(false);
 		btnPageTwoReturn.setBorderPainted(false);
 		
-		JButton btnPageThreeGradeAssignments = new JButton(GraphicsConstants.ICON_GRADE_ASSIGNMENTS);
+		JButton btnPageThreeGradeAssignments = new JButton(iconGradeAssignments);
 		btnPageThreeGradeAssignments.setBorder(null);
 		btnPageThreeGradeAssignments.setOpaque(false);
 		btnPageThreeGradeAssignments.setContentAreaFilled(false);
 		btnPageThreeGradeAssignments.setBorderPainted(false);
 		
-		JButton btnPageThreeStudentReport = new JButton(GraphicsConstants.ICON_STUDENT_REPORT);
+		JButton btnPageThreeStudentReport = new JButton(iconStudentReport);
 		btnPageThreeStudentReport.setBorder(null);
 		btnPageThreeStudentReport.setOpaque(false);
 		btnPageThreeStudentReport.setContentAreaFilled(false);
 		btnPageThreeStudentReport.setBorderPainted(false);
 		
-		JButton btnPageThreeInstructions = new JButton(GraphicsConstants.ICON_INSTRUCTIONS2);
+		JButton btnPageThreeInstructions = new JButton(iconInstructions2);
 		btnPageThreeInstructions.setBorder(null);
 		btnPageThreeInstructions.setOpaque(false);
 		btnPageThreeInstructions.setContentAreaFilled(false);
 		btnPageThreeInstructions.setBorderPainted(false);
 		
-		JButton btnPageThreeClose = new JButton(GraphicsConstants.ICON_CLOSE);
+		JButton btnPageThreeClose = new JButton(iconClose);
 		btnPageThreeClose.setBorder(null);
 		btnPageThreeClose.setOpaque(false);
 		btnPageThreeClose.setContentAreaFilled(false);
 		btnPageThreeClose.setBorderPainted(false);
 		
-		JButton btnPageFourAddAssignments = new JButton(GraphicsConstants.ICON_ADD_ASSIGNMENTS);
+		JButton btnPageFourAddAssignments = new JButton(iconAddAssignments);
 		btnPageFourAddAssignments.setBorder(null);
 		btnPageFourAddAssignments.setOpaque(false);
 		btnPageFourAddAssignments.setContentAreaFilled(false);
 		btnPageFourAddAssignments.setBorderPainted(false);
 		
-		JButton btnPageFourStudentReport = new JButton(GraphicsConstants.ICON_STUDENT_REPORT);
+		JButton btnPageFourStudentReport = new JButton(iconStudentReport);
 		btnPageFourStudentReport.setBorder(null);
 		btnPageFourStudentReport.setOpaque(false);
 		btnPageFourStudentReport.setContentAreaFilled(false);
 		btnPageFourStudentReport.setBorderPainted(false);
 		
-		JButton btnPageFourInstructions = new JButton(GraphicsConstants.ICON_INSTRUCTIONS2);
+		JButton btnPageFourInstructions = new JButton(iconInstructions2);
 		btnPageFourInstructions.setBorder(null);
 		btnPageFourInstructions.setOpaque(false);
 		btnPageFourInstructions.setContentAreaFilled(false);
 		btnPageFourInstructions.setBorderPainted(false);
 		
-		JButton btnPageFourClose = new JButton(GraphicsConstants.ICON_CLOSE);
+		JButton btnPageFourClose = new JButton(iconClose);
 		btnPageFourClose.setBorder(null);
 		btnPageFourClose.setOpaque(false);
 		btnPageFourClose.setContentAreaFilled(false);
 		btnPageFourClose.setBorderPainted(false);
 		
-		JButton btnPageFiveAddAssignments = new JButton(GraphicsConstants.ICON_ADD_ASSIGNMENTS);
+		JButton btnPageFiveAddAssignments = new JButton(iconAddAssignments);
 		btnPageFiveAddAssignments.setBorder(null);
 		btnPageFiveAddAssignments.setOpaque(false);
 		btnPageFiveAddAssignments.setContentAreaFilled(false);
 		btnPageFiveAddAssignments.setBorderPainted(false);
 		
-		JButton btnPageFiveGradeAssignments = new JButton(GraphicsConstants.ICON_GRADE_ASSIGNMENTS);
+		JButton btnPageFiveGradeAssignments = new JButton(iconGradeAssignments);
 		btnPageFiveGradeAssignments.setBorder(null);
 		btnPageFiveGradeAssignments.setOpaque(false);
 		btnPageFiveGradeAssignments.setContentAreaFilled(false);
 		btnPageFiveGradeAssignments.setBorderPainted(false);
 		
-		JButton btnPageFiveInstructions = new JButton(GraphicsConstants.ICON_INSTRUCTIONS2);
+		JButton btnPageFiveInstructions = new JButton(iconInstructions2);
 		btnPageFiveInstructions.setBorder(null);
 		btnPageFiveInstructions.setOpaque(false);
 		btnPageFiveInstructions.setContentAreaFilled(false);
 		btnPageFiveInstructions.setBorderPainted(false);
 		
-		JButton btnPageFiveClose = new JButton(GraphicsConstants.ICON_CLOSE);
+		JButton btnPageFiveClose = new JButton(iconClose);
 		btnPageFiveClose.setBorder(null);
 		btnPageFiveClose.setOpaque(false);
 		btnPageFiveClose.setContentAreaFilled(false);
 		btnPageFiveClose.setBorderPainted(false);
 		
-		JButton btnPageSixClose = new JButton(GraphicsConstants.ICON_CLOSE);
+		JButton btnPageSixClose = new JButton(iconClose);
 		btnPageSixClose.setBorder(null);
 		btnPageSixClose.setOpaque(false);
 		btnPageSixClose.setContentAreaFilled(false);

@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -103,7 +104,7 @@ public class StudentReport extends JPanel {
 
 		centerPanel.setBackground(GraphicsConstants.COLOR_BACKGROUND);
 
-		JLabel labelSelectStudent = new JLabel(GraphicsConstants.ICON_SELECT_STUDENT);
+		JLabel labelSelectStudent = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("SELECT_STUDENT.png")));
 
 		comboBoxSelectStudents = new JComboBox<String>();
 		comboBoxSelectStudents.addItem("Select Student");
@@ -130,13 +131,13 @@ public class StudentReport extends JPanel {
 		JPanel southPanel = new JPanel(fl);
 		southPanel.setBackground(GraphicsConstants.COLOR_BACKGROUND);
 
-		JButton btnRetrieveData = new JButton(GraphicsConstants.ICON_RETRIEVE_DATA);
+		JButton btnRetrieveData = new JButton(new ImageIcon(getClass().getClassLoader().getResource("RETRIEVE_DATA.png")));
 		btnRetrieveData.setBorder(null);
 		btnRetrieveData.setOpaque(false);
 		btnRetrieveData.setContentAreaFilled(false);
 		btnRetrieveData.setBorderPainted(false);
 
-		JButton btnGenerateReport = new JButton(GraphicsConstants.ICON_GENERATE_REPORT);
+		JButton btnGenerateReport = new JButton(new ImageIcon(getClass().getClassLoader().getResource("GENERATE_REPORT.png")));
 		btnGenerateReport.setBorder(null);
 		btnGenerateReport.setOpaque(false);
 		btnGenerateReport.setContentAreaFilled(false);
@@ -167,14 +168,17 @@ public class StudentReport extends JPanel {
 					}
 
 				} else if (e.getSource() == btnGenerateReport) {
-
+					ImageIcon iconFileCreated = new ImageIcon(getClass().getClassLoader().getResource("FILE_CREATED.png"));
+					ImageIcon iconFailCompile = new ImageIcon(getClass().getClassLoader().getResource("FAILED_TO_COMPILE.png"));
+					
+					
 					try {
 						if (StudentInformation.generateStudentReport(comboBoxSelectStudents.getSelectedIndex())) {
-							labelResult.setIcon(GraphicsConstants.ICON_FILE_CREATED);
+							labelResult.setIcon(iconFileCreated);
 							setVisible(false);
 							setVisible(true);
 						} else {
-							labelResult.setIcon(GraphicsConstants.ICON_FAILED_TO_COMPILE);
+							labelResult.setIcon(iconFailCompile);
 							setVisible(false);
 							setVisible(true);
 						}

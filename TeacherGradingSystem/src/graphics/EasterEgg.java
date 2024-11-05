@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -39,7 +40,7 @@ public class EasterEgg extends JPanel {
 		add(northPanel, BorderLayout.NORTH);
 		
 		
-		JLabel easterEggHolder = new JLabel(GraphicsConstants.ICON_THE_EASTER_EGG);
+		JLabel easterEggHolder = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("THE_EASTER_EGG.png")));
 		add(easterEggHolder, BorderLayout.CENTER);
 		easterEggHolder.setOpaque(false);
 		easterEggHolder.setBorder(null);

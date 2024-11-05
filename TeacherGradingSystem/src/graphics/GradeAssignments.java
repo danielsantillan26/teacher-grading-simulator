@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -111,7 +112,7 @@ public class GradeAssignments extends JPanel {
 		JPanel centerPanel = new JPanel(new MigLayout());
 		centerPanel.setBackground(GraphicsConstants.COLOR_BACKGROUND);
 
-		JLabel labelSelectAssignment = new JLabel(GraphicsConstants.ICON_SELECT_ASSIGNMENT);
+		JLabel labelSelectAssignment = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("SELECT_ASSIGNMENT.png")));
 		comboBoxSelectAssignment = new JComboBox<String>();
 		comboBoxSelectAssignment.addItem("Select Assignment");
 		comboBoxSelectAssignment.setPreferredSize(new Dimension(300, 30));
@@ -162,19 +163,19 @@ public class GradeAssignments extends JPanel {
 		southPanel.setBackground(GraphicsConstants.COLOR_BACKGROUND);
 		southPanel.setPreferredSize(new Dimension(getWidth(), 50));
 
-		JButton btnLoadStudentData = new JButton(GraphicsConstants.ICON_LOAD_STUDENT_DATA);
+		JButton btnLoadStudentData = new JButton(new ImageIcon(getClass().getClassLoader().getResource("LOAD_STUDENT_DATA.png")));
 		btnLoadStudentData.setBorder(null);
 		btnLoadStudentData.setOpaque(false);
 		btnLoadStudentData.setContentAreaFilled(false);
 		btnLoadStudentData.setBorderPainted(false);
 
-		JButton btnRetrieveData = new JButton(GraphicsConstants.ICON_RETRIEVE_DATA);
+		JButton btnRetrieveData = new JButton(new ImageIcon(getClass().getClassLoader().getResource("RETRIEVE_DATA.png")));
 		btnRetrieveData.setBorder(null);
 		btnRetrieveData.setOpaque(false);
 		btnRetrieveData.setContentAreaFilled(false);
 		btnRetrieveData.setBorderPainted(false);
 
-		JButton btnSaveData = new JButton(GraphicsConstants.ICON_SAVE_DATA);
+		JButton btnSaveData = new JButton(new ImageIcon(getClass().getClassLoader().getResource("SAVE_DATA.png")));
 		btnSaveData.setBorder(null);
 		btnSaveData.setOpaque(false);
 		btnSaveData.setContentAreaFilled(false);
